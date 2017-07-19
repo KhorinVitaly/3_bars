@@ -69,9 +69,9 @@ def print_smallest_biggest_and_closest_bars(data):
 
 
 if __name__ == '__main__':
-    data = fetch_data()
+    text = fetch_data()
     try:
-        print_smallest_biggest_and_closest_bars(data)
+        print_smallest_biggest_and_closest_bars(text)
     except TypeError:
         print("File format error!")
     except ValueError:
