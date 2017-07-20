@@ -31,18 +31,18 @@ def check_of_coordinates(latitude, longitude):
 
 
 def get_closest_bar(json_data, latitude, longitude):
-    call_func = partial(get_distance, latitude, longitude)
-    return min(json_data, key=lambda x: call_func(float(x["Latitude_WGS84"]), float(x["Longitude_WGS84"])))
+    call_distance = partial(get_distance, latitude, longitude)
+    return min(json_data, key=lambda x: call_distance(float(x["Latitude_WGS84"]), float(x["Longitude_WGS84"])))
 
 
 def print_bar(bar_item):
-   name = bar_item["Name"]
+   bars_name = bar_item["Name"]
    adm_area = bar_item["AdmArea"]
    district = bar_item["District"]
    address = bar_item["Address"]
    phone = bar_item["PublicPhone"][0]["PublicPhone"]
 
-   print('Name: {0}; Address: {1}, {2}, {3}; Phone {4}'.format(name, adm_area, district, address, phone))
+   print('Name: {0}; Address: {1}, {2}, {3}; Phone {4}'.format(bars_name, adm_area, district, address, phone))
 
 
 def fetch_data():
