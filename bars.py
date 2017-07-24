@@ -41,7 +41,6 @@ def print_bar(bar_item):
    district = bar_item["District"]
    address = bar_item["Address"]
    phone = bar_item["PublicPhone"][0]["PublicPhone"]
-
    print('Name: {0}; Address: {1}, {2}, {3}; Phone {4}'.format(bars_name, adm_area, district, address, phone))
 
 
@@ -56,7 +55,6 @@ def fetch_data():
         print("File not specified!")
     except json.JSONDecodeError:
         print("File is not JSON!")
-    exit()
 
 
 def intput_coordinates():
@@ -78,6 +76,8 @@ def print_smallest_biggest_and_closest_bars(json_data, latitude, longitude):
 
 if __name__ == '__main__':
     json_data = fetch_data()
+    if not json_data:
+        exit()
     try:
         latitude, longitude = intput_coordinates()
         print_smallest_biggest_and_closest_bars(json_data, latitude, longitude)
